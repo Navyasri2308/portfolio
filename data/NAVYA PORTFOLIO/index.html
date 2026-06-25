@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sadi Navya Sri - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Design Variables & Reset --- */
+    :root {
+      --bg-color: #f7f9fc;          
+      --text-main: #111111;         
+      --text-muted: #666666;        
+      --text-light: #888888;        
+      --line-color: #dddddd;        
+      
+      /* Accent Colors */
+      --ibm-blue: #3b82f6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 4rem 2rem;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    /* --- Top Navigation Header Bar Layout --- */
+    .nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0 3.5rem 0; 
+    }
+
+    .logo-sphere {
+      width: 24px;
+      height: 24px;
+      background: radial-gradient(circle at 35% 35%, #8b5cf6, #430e93); 
+      border-radius: 50%;
+      box-shadow: inset -2px -2px 6px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem; 
+    }
+
+    .nav-item {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-item:hover {
+      color: #6366f1; 
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      padding: 0.25rem;
+      transition: color 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      color: var(--text-main);
+    }
+
+    /* --- Profile Header Layout --- */
+    .profile-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .name {
+      font-size: 2.25rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .title {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .bio p {
+      font-size: 1rem;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    /* --- Section Headings Feature (01, 02, 03) --- */
+    .section-title-container {
+      display: flex;
+      align-items: baseline;
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .section-number {
+      font-size: 0.85rem;
+      color: #bbbbbb;
+      font-weight: 500;
+      position: absolute;
+      top: -1.2rem;
+      left: 0;
+    }
+
+    .section-heading {
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-transform: lowercase;
+      margin-right: 1rem;
+    }
+
+    .header-line {
+      flex-grow: 1;
+      height: 1px;
+      background-color: var(--line-color);
+      align-self: center;
+    }
+
+    /* --- Experience List & Items --- */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .experience-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .experience-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .company-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .company-name::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 1px;
+    }
+
+    .color-ibm::before { background-color: var(--ibm-blue); }
+
+    .role {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .description {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 0.15rem;
+    }
+
+    .item-right {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .date {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* --- Projects Section Layout --- */
+    .projects-section {
+      margin-top: 4rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-image-wrapper {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background-color: #111111;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-description {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      min-height: 42px;
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      background-color: #f1f5f9;
+      color: #475569;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .card-links {
+      margin-top: auto;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #334155;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn-link:hover {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      border-color: #cbd5e1;
+    }
+
+    /* --- Contact & Footer Section --- */
+    .contact-section {
+      margin-top: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-text {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 0.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-link {
+      font-size: 1rem;
+      color: #666666;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.2s ease;
+    }
+
+    .arrow-icon {
+      font-size: 0.85rem;
+      color: #888888;
+    }
+
+    .social-link:hover, .social-link:hover .arrow-icon {
+      color: #111111;
+    }
+
+    .footer-copyright {
+      font-size: 0.95rem;
+      color: #999999;
+      font-weight: 400;
+    }
+
+    /* --- Responsive Queries --- */
+    @media (max-width: 650px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .experience-item { flex-direction: column; gap: 0.5rem; }
+      .item-right { text-align: left; }
+    }
+    @media (max-width: 550px) {
+      .footer-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    
+    <nav class="nav-header">
+      <div class="nav-logo">
+        <div class="logo-sphere"></div>
+      </div>
+      <div class="nav-links">
+        <a href="#experience" class="nav-item">work</a>
+        <a href="#projects" class="nav-item">projects</a>
+        <a href="#contact" class="nav-item">contact</a>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </nav>
+
+    <header class="profile-header">
+      <h1 class="name">Sadi Navya Sri</h1>
+      <p class="title">Software Engineer</p>
+      <div class="bio">
+        <p>Dedicated to building high-performance applications and scalable software systems.</p>
+        <p>LTRC student at IIIT HYDERABAD.</p>
+      </div>
+    </header>
+
+    <section id="experience" class="experience-section">
+      <div class="section-title-container">
+        <span class="section-number">01</span>
+        <h2 class="section-heading">experience</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="experience-list">
+        <div class="experience-item">
+          <div class="item-left">
+            <h3 class="company-name color-ibm">IIIT HYDERABAD</h3>
+            <p class="role">Software Engineer Intern</p>
+            <p class="description">Incoming engineering intern focusing on natural language processing for better enhancement.</p>
+          </div>
+          <div class="item-right">
+            <span class="date">June 2026 – Sep 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+      <div class="section-title-container">
+        <span class="section-number">02</span>
+        <h2 class="section-heading">projects</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="card-image-wrapper">
+            <img src="image.png" alt="Web Bench Preview" class="card-img">
+          </div>
+          
+          <div class="card-content">
+            <h3 class="project-title">IndicAccent-NLI</h3>
+            <p class="project-description">
+              This project focuses on Native Language Identification (NLI) of Indian English speakers. The goal is to classify the native language (L1) of a speaker by analyzing their English speech accent.
+            </p>
+            
+            <div class="tags-container">
+              <span class="tag">Python</span>
+              <span class="tag">HuBERT</span>
+              <span class="tag">MFCC</span>
+            </div>
+            
+            <div class="card-links">
+              <a href="https://github.com/Navyasri2308/IndicAccent-NLI" target="_blank" rel="noopener noreferrer" class="btn-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="section-title-container">
+        <span class="section-number">03</span>
+        <h2 class="section-heading">contact</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="contact-content">
+        <p class="contact-text">
+          I'm always looking for new opportunities to learn and grow. Feel free to reach out to me!
+        </p>
+
+        <footer class="footer-row">
+          <div class="footer-links">
+            <a href="https://www.linkedin.com/in/sadi-navya-sri-a635b9347/" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="arrow-icon">↗</span> linkedin
+            </a>
+            <a href="https://github.com/Navyasri2308" target="_blank" rel="noopener noreferrer" class="social-link">
+              <span class="arrow-icon">↗</span> github
+            </a>
+          </div>
+          
+          <div class="footer-copyright">
+            &copy; 2026 Navya Sri
+          </div>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

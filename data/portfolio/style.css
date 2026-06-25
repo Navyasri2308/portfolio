@@ -1,0 +1,339 @@
+/* --- Design Variables & Reset --- */
+:root {
+  --bg-color: #f7f9fc;          /* Subtle off-white/light blue tint background */
+  --text-main: #111111;         /* Near black for headers */
+  --text-muted: #666666;        /* Slate gray for subtitles and dates */
+  --text-light: #888888;        /* Lighter gray for descriptions */
+  --line-color: #dddddd;        /* Very light gray for section rules and dividers */
+  
+  /* Company Feature Accent Colors */
+  --ibm-blue: #3b82f6;
+  --stealth-teal: #0ea5e9;
+  --stanford-red: #ef4444;
+  --mtc-yellow: #f59e0b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.5;
+  padding: 4rem 2rem;
+}
+
+.container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* --- Profile Header Layout --- */
+.profile-header {
+  margin-bottom: 3.5rem;
+}
+
+.name {
+  font-size: 2.25rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.bio p {
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+/* --- Section Headings Feature (01, 02, 03) --- */
+.section-title-container {
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.section-number {
+  font-size: 0.85rem;
+  color: #bbbbbb;
+  font-weight: 500;
+  position: absolute;
+  top: -1.2rem;
+  left: 0;
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  margin-right: 1rem;
+}
+
+.header-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--line-color);
+  align-self: center;
+}
+
+/* --- Experience List & Items --- */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+}
+
+/* --- Experience Left Side Content & Square Accents --- */
+.item-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.company-name::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 1px;
+}
+
+.color-ibm::before { background-color: var(--ibm-blue); }
+.color-stealth::before { background-color: var(--stealth-teal); }
+.color-stanford::before { background-color: var(--stanford-red); }
+.color-mtc::before { background-color: var(--mtc-yellow); }
+
+.role {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 0.15rem;
+}
+
+/* --- Experience Right Side Dates --- */
+.item-right {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* --- Projects Section Layout --- */
+.projects-section {
+  margin-top: 4rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* --- Project Card Styling --- */
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #111111;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  min-height: 42px;
+}
+
+/* --- Tech Stack Pills/Tags --- */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  background-color: #f1f5f9;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+
+/* --- Action Links & SVG Icons --- */
+.card-links {
+  margin-top: auto;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #334155;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-link:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+/* --- Contact & Footer Section --- */
+.contact-section {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-text {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* --- Footer Row Layout --- */
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-link {
+  font-size: 1rem;
+  color: #666666;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.arrow-icon {
+  font-size: 0.85rem;
+  color: #888888;
+}
+
+.social-link:hover, .social-link:hover .arrow-icon {
+  color: #111111;
+}
+
+.footer-copyright {
+  font-size: 0.95rem;
+  color: #999999;
+  font-weight: 400;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 650px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .experience-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .item-right {
+    text-align: left;
+  }
+}
+
+@media (max-width: 550px) {
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
